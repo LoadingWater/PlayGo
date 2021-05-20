@@ -1,14 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rootRegistrationFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationFragment">
+    android:background="@color/darkBlue"
+    tools:context=".fragments.RegistrationFragment"
+    android:focusableInTouchMode="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view6"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <TextView
+        android:id="@+id/playGoRegistrationFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bernard_mt"
+        android:text="PlayGo"
+        android:textColor="@color/darkYellow"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PlayGo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameRegistrationFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5">
+
+
+        <TextView
+            android:id="@+id/registerRegistrationFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hp_simplified265"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/usernameFieldRegistrationFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/emailFieldRegistrationFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edit_text"
+            android:drawableLeft="@drawable/ic_outline_email_24"
+            android:ems="10"
+            android:fontFamily="@font/hp_simplified265"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordFieldRegistrationFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Email" />
+
+        <EditText
+            android:id="@+id/usernameFieldRegistrationFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edit_text"
+            android:drawableLeft="@drawable/ic_outline_account_circle_24"
+            android:ems="10"
+            android:fontFamily="@font/hp_simplified265"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/emailFieldRegistrationFragment"
+            app:layout_constraintEnd_toEndOf="@+id/emailFieldRegistrationFragment"
+            app:layout_constraintStart_toStartOf="@+id/emailFieldRegistrationFragment"
+            tools:text="Username" />
+
+        <EditText
+            android:id="@+id/passwordFieldRegistrationFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:background="@drawable/rounded_edit_text"
+            android:drawableLeft="@drawable/ic_outline_lock_24"
+            android:ems="10"
+            android:fontFamily="@font/hp_simplified265"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/usernameFieldRegistrationFragment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/usernameFieldRegistrationFragment"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Password" />
+
+        <com.wspateam.playgo.customviews.CustomButton
+            android:id="@+id/registerButtonRegistrationFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/hp_simplified265"
+            android:text="Register"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/usernameFieldRegistrationFragment"
+            app:layout_constraintStart_toStartOf="@+id/usernameFieldRegistrationFragment"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxRegistrationFragment" />
+
+        <CheckBox
+            android:id="@+id/checkBoxRegistrationFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:layout_marginTop="10dp"
+            android:text="Forget about me"
+            app:layout_constraintEnd_toEndOf="@+id/passwordFieldRegistrationFragment"
+            app:layout_constraintStart_toStartOf="@+id/passwordFieldRegistrationFragment"
+            app:layout_constraintTop_toBottomOf="@+id/passwordFieldRegistrationFragment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

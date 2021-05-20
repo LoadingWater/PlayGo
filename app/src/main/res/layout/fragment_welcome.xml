@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootWelcomeFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    android:focusableInTouchMode="true"
+    tools:context=".fragments.LoginFragment">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/view6"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <TextView
+        android:id="@+id/playGoWelcomeFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bernard_mt"
+        android:text="PlayGo"
+        android:textColor="@color/darkYellow"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PlayGo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameWelcomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6">
+
+        <com.wspateam.playgo.customviews.CustomButton
+            android:id="@+id/loginWelcomeFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/hp_simplified265"
+            android:text="Login"
+            app:layout_constraintBottom_toTopOf="@+id/createWelcomeFragment"
+            app:layout_constraintEnd_toEndOf="@+id/createWelcomeFragment"
+            app:layout_constraintStart_toStartOf="@+id/createWelcomeFragment" />
+
+        <com.wspateam.playgo.customviews.CustomButton
+            android:id="@+id/createWelcomeFragment"
+            android:layout_width="@dimen/mediumWidth"
+            android:layout_height="@dimen/mediumHeight"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/hp_simplified265"
+            android:text="Create an account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/orSingInWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+
+            android:text="or sign in with"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createWelcomeFragment"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <TextView
+            android:id="@+id/facebookWelcomeFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/baseline_facebook_black_48"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/discordWelcomeFragment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orSingInWelcome" />
+
+        <TextView
+            android:id="@+id/discordWelcomeFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discord"
+            app:layout_constraintEnd_toStartOf="@+id/googleWelcomeFragment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/facebookWelcomeFragment"
+            app:layout_constraintTop_toTopOf="@+id/facebookWelcomeFragment" />
+
+        <TextView
+            android:id="@+id/googleWelcomeFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Google+"
+            app:layout_constraintEnd_toStartOf="@+id/twitterWelcomeFragment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/discordWelcomeFragment"
+            app:layout_constraintTop_toTopOf="@+id/discordWelcomeFragment" />
+
+        <TextView
+            android:id="@+id/twitterWelcomeFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Twitter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/googleWelcomeFragment"
+            app:layout_constraintTop_toTopOf="@+id/googleWelcomeFragment" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bernard_mt"
+        android:text="Welcome"
+        android:textColor="@color/darkGray"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playGoWelcomeFragment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

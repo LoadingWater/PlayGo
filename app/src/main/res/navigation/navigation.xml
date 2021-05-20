@@ -3,28 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.wspateam.playgo.loginFragment"
+        android:name="com.wspateam.playgo.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_roomsFragment"
-            app:destination="@id/roomsFragment" />
+            app:destination="@id/roomsFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:popUpTo="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.wspateam.playgo.RegistrationFragment"
+        android:name="com.wspateam.playgo.fragments.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_roomsFragment"
+            app:destination="@id/roomsFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/roomsFragment"
-        android:name="com.wspateam.playgo.RoomsFragment"
+        android:name="com.wspateam.playgo.fragments.RoomsFragment"
         android:label="fragment_rooms"
         tools:layout="@layout/fragment_rooms" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.wspateam.playgo.fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
 </navigation>

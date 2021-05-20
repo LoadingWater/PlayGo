@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- region loginFragment colors -->
+    <color name="darkBlue">#0d0627</color>
+    <color name="darkYellow">#c49b2b</color>
+    <color name="gray">#cfcfcf</color>
+    <color name="darkGray">#7c7c7c</color>
+    <!-- endregion loginFragment colors -->
+
 </resources>
