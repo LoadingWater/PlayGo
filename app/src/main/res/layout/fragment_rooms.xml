@@ -1,14 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="@color/darkBlue"
     tools:context=".fragments.RoomsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Toolbar
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/darkBlue"
+        android:navigationIcon="@drawable/ic_round_menu_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <SearchView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_search_view"
+                android:iconifiedByDefault="false"
+                android:searchIcon="@drawable/ic_round_search_24_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:drawableLeft="@drawable/ic_outline_account_circle_24_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/linearVerticalMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <TextView
+            android:id="@+id/popularRoomsFragment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_search_view"
+            android:gravity="center"
+            android:text="Popular"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/recommendedRoomsFragment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Recommended"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/favoriteRoomsFragment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Favorite"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/linearVerticalMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/linearItemsSpacing"
+                android:background="@drawable/rounded_search_view"
+                android:padding="@dimen/frameSmallPadding">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="top|center"
+                    app:srcCompat="@drawable/dota2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:gravity="center"
+                    android:text="League of Legends"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/linearItemsSpacing"
+                android:background="@drawable/rounded_search_view"
+                android:padding="@dimen/frameSmallPadding">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="top|center"
+                    app:srcCompat="@drawable/dota2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:gravity="center"
+                    android:text="World of Tanks"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/linearItemsSpacing"
+                android:background="@drawable/rounded_search_view"
+                android:padding="@dimen/frameSmallPadding">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="top|center"
+                    app:srcCompat="@drawable/dota2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:gravity="center"
+                    android:text="Fortnite"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/linearItemsSpacing"
+                android:background="@drawable/rounded_search_view"
+                android:padding="@dimen/frameSmallPadding">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="top|center"
+                    app:srcCompat="@drawable/dota2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:gravity="center"
+                    android:text="DOTA2"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/linearVerticalMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Forum"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_search_view"
+            android:gravity="center"
+            android:text="Today"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Popular"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_marginEnd="@dimen/linearItemsSpacing"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Favorite"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/addDiscussionRoomsFragment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_weight="2"
+            android:background="@drawable/rounded_search_view"
+            android:backgroundTint="@color/darkYellow"
+            android:gravity="center"
+            android:text="Add discussion"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/linearVerticalMargin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:itemCount="10"
+        tools:listitem="@layout/forum_post_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

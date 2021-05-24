@@ -34,6 +34,5 @@ class LoginFragment : Fragment()
 		loginButton.setOnClickListener {
 			loginController.loginUser()
 		}
-
 	}
 }

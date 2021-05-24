@@ -28,6 +28,5 @@ class RegistrationFragment : Fragment()
 		registerButton.setOnClickListener {
 			registrationController.registerUser()
 		}
-
 	}
 }
