@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/roomsFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -33,7 +33,12 @@
         android:id="@+id/roomsFragment"
         android:name="com.wspateam.playgo.fragments.RoomsFragment"
         android:label="fragment_rooms"
-        tools:layout="@layout/fragment_rooms" />
+        tools:layout="@layout/fragment_rooms" >
+        <action
+            android:id="@+id/action_roomsFragment_to_forumPostFragment"
+            app:destination="@id/forumPostFragment"
+            app:popUpTo="@id/roomsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.wspateam.playgo.fragments.WelcomeFragment"
@@ -47,5 +52,26 @@
             android:id="@+id/action_welcomeFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
             app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forumPostFragment"
+        android:name="com.wspateam.playgo.fragments.ForumPostFragment"
+        android:label="fragment_forum_post"
+        tools:layout="@layout/fragment_forum_post" >
+        <argument
+            android:name="postUid"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="author"
+            app:argType="string" />
+        <argument
+            android:name="body"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
     </fragment>
 </navigation>

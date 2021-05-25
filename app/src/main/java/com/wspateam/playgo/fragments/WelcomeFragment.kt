@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.wspateam.playgo.R
 
+
 class WelcomeFragment : Fragment()
 {
+	val TAG = "WelcomeFragment"
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 							  savedInstanceState: Bundle?): View?

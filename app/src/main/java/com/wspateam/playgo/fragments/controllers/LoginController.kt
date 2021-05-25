@@ -14,10 +14,10 @@ import com.wspateam.playgo.viewmodels.SharedApplicationViewModel
 
 class LoginController(val loginFragment: LoginFragment)
 {
-    val TAG = "LoginController"
-    val sharedViewModel = ViewModelProvider(loginFragment).get(SharedApplicationViewModel::class.java)
-    val view = loginFragment.requireView()
-    val activity = loginFragment.requireActivity()
+    private val TAG = "LoginController"
+    private val sharedViewModel = ViewModelProvider(loginFragment).get(SharedApplicationViewModel::class.java)
+    private val view = loginFragment.requireView()
+    private val activity = loginFragment.requireActivity()
 
     fun setUpViewsForHidingKeyboard()
     {

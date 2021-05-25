@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rootLayoutForumPostItem"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,17 +12,17 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titleForumPostItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Name of the post"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteForumPostItem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/authorName"
+        android:id="@+id/authorForumPostItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -29,33 +31,34 @@
         android:text="Author name"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/titleForumPostItem" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/repliesCountForumPostItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:text="12 replies"
+        tools:text="12 replies"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorName" />
+        app:layout_constraintTop_toBottomOf="@+id/authorForumPostItem" />
 
     <TextView
+        android:id="@+id/dateForumPostItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="22 may 2021"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/repliesCountForumPostItem"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/favoriteForumPostItem"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_favorite_border_24_white" />
+        app:srcCompat="@drawable/ic_round_favorite_border_24_border_yellow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

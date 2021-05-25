@@ -4,9 +4,12 @@
     <dimen name="linearItemsSpacing">15dp</dimen>
     <dimen name="mediumWidth">200dp</dimen>
     <dimen name="mediumHeight">45dp</dimen>
+    <dimen name="smallHeight">30dp</dimen>
     <dimen name="linearHorizontalMargin">5dp</dimen>
     <dimen name="linearVerticalMargin">20dp</dimen>
     <dimen name="frameSmallPadding">5dp</dimen>
+    <dimen name="defaultVerticalMargin">5dp</dimen>
     <dimen name="textViewHeight">30dp</dimen>
+    <dimen name="editTextStartPadding">5dp</dimen>
 
 </resources>

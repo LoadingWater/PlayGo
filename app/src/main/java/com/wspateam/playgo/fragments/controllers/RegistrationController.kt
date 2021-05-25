@@ -6,18 +6,20 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.google.firebase.database.FirebaseDatabase
 import com.wspateam.playgo.R
 import com.wspateam.playgo.androidutilities.AndroidUtilities
 import com.wspateam.playgo.fragments.RegistrationFragment
+import com.wspateam.playgo.models.User
 import com.wspateam.playgo.viewmodels.SharedApplicationViewModel
 
 
 class RegistrationController(val registrationFragment: RegistrationFragment)
 {
-    val TAG = "RegistrationController"
-    val sharedViewModel = ViewModelProvider(registrationFragment).get(SharedApplicationViewModel::class.java)
-    val view = registrationFragment.requireView()
-    val activity = registrationFragment.requireActivity()
+    private val TAG = "RegistrationController"
+    private val sharedViewModel = ViewModelProvider(registrationFragment).get(SharedApplicationViewModel::class.java)
+    private val view = registrationFragment.requireView()
+    private val activity = registrationFragment.requireActivity()
 
     fun setUpViewsForHidingKeyboard()
     {
@@ -46,6 +48,8 @@ class RegistrationController(val registrationFragment: RegistrationFragment)
             val a = sharedViewModel.firebaseAuthInstance.value?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener {
                 if (it.isSuccessful)
                 {
+                    val uid = it.result?.user?.uid
+                    pushUserToFirebase(uid!!, username, email, password)
                     Toast.makeText(registrationFragment.context, "User registered.", Toast.LENGTH_SHORT).show()
                     Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_roomsFragment)
                 }
@@ -59,6 +63,22 @@ class RegistrationController(val registrationFragment: RegistrationFragment)
         else
         {
             Toast.makeText(registrationFragment.context, "Empty fields.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun pushUserToFirebase(uid: String, username: String, email: String, password: String)
+    {
+        val ref = sharedViewModel.firebaseDatabaseInstance.value?.reference ?: FirebaseDatabase.getInstance().reference
+        val user = User(uid, username, email, password)
+        ref.child("users").child(uid).setValue(user).addOnCompleteListener {
+            if (it.isSuccessful)
+            {
+                Log.i(TAG, "User pushed to the db.")
+            }
+            else
+            {
+                Log.e(TAG, "Didn't push a user to the db.")
+            }
         }
     }
 }

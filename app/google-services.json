@@ -1,33 +1,63 @@
 {
   "project_info": {
-    "project_number": "956729212780",
-    "project_id": "playgo-9bab7",
-    "storage_bucket": "playgo-9bab7.appspot.com"
+    "project_number": "983727829068",
+    "firebase_url": "https://playgo-3952a-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "playgo-3952a",
+    "storage_bucket": "playgo-3952a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:956729212780:android:98f01bd11925bb8df47d49",
+        "mobilesdk_app_id": "1:983727829068:android:4f66d029f2ea3028e5c4e9",
         "android_client_info": {
-          "package_name": "com.wspateam.playgo"
+          "package_name": "com.me.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "956729212780-4g919neslt7vuhdkbea8lska2f88rf20.apps.googleusercontent.com",
+          "client_id": "983727829068-ccr32appi3bqc4cjnth5ociplei3idfq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAKUw9wbxMjCZbR4X-Xgg1XcfD8wIAubcw"
+          "current_key": "AIzaSyCzltpUpVVl9l53r2dTZ2mh-fzQVH-i9_A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "956729212780-4g919neslt7vuhdkbea8lska2f88rf20.apps.googleusercontent.com",
+              "client_id": "983727829068-ccr32appi3bqc4cjnth5ociplei3idfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983727829068:android:af72787487765d11e5c4e9",
+        "android_client_info": {
+          "package_name": "com.wspateam.playgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983727829068-ccr32appi3bqc4cjnth5ociplei3idfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzltpUpVVl9l53r2dTZ2mh-fzQVH-i9_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983727829068-ccr32appi3bqc4cjnth5ociplei3idfq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
