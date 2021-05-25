@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,9 @@ class RoomsController(val roomsFragment: RoomsFragment)
     private val dbRef = sharedViewModel.firebaseDatabaseInstance.value?.reference ?: FirebaseDatabase.getInstance().reference
     private val view = roomsFragment.requireView()
     private val activity = roomsFragment.requireActivity()
+
+    private var upperRowSelectedView = view.findViewById<TextView>(R.id.popularRoomsFragment)
+    private var lowerRowSelectedView = view.findViewById<TextView>(R.id.todayLowerRoomsFragment)
 
     fun pushPostToFirebase(uid: String, author: String, title: String, body: String)
     {
@@ -177,5 +181,45 @@ class RoomsController(val roomsFragment: RoomsFragment)
         clearCreationForm()
         hideKeyboard(view)
         hideCreationForm()
+    }
+
+    fun setUpUpperRowSelection()
+    {
+        view.findViewById<TextView>(R.id.popularRoomsFragment).setOnClickListener {
+            changeUpperRowSelection(it as TextView)
+        }
+        view.findViewById<TextView>(R.id.recommendedRoomsFragment).setOnClickListener {
+            changeUpperRowSelection(it as TextView)
+        }
+        view.findViewById<TextView>(R.id.favoriteRoomsFragment).setOnClickListener {
+            changeUpperRowSelection(it as TextView)
+        }
+    }
+
+    fun setUpLowerRowSelection()
+    {
+        view.findViewById<TextView>(R.id.todayLowerRoomsFragment).setOnClickListener {
+            changeLowerRowSelection(it as TextView)
+        }
+        view.findViewById<TextView>(R.id.popularLowerRoomsFragment).setOnClickListener {
+            changeLowerRowSelection(it as TextView)
+        }
+        view.findViewById<TextView>(R.id.favoriteLowerRoomsFragment).setOnClickListener {
+            changeLowerRowSelection(it as TextView)
+        }
+    }
+
+    private fun changeUpperRowSelection(clickedView: TextView)
+    {
+        upperRowSelectedView.background = null
+        clickedView.background = view.resources.getDrawable(R.drawable.rounded_rect_yellow)
+        upperRowSelectedView = clickedView
+    }
+
+    private fun changeLowerRowSelection(clickedView: TextView)
+    {
+        lowerRowSelectedView.background = null
+        clickedView.background = view.resources.getDrawable(R.drawable.rounded_rect_yellow)
+        lowerRowSelectedView = clickedView
     }
 }

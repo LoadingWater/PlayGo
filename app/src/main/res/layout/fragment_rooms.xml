@@ -232,6 +232,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/todayLowerRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -243,6 +244,7 @@
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/popularLowerRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -253,6 +255,7 @@
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/favoriteLowerRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"

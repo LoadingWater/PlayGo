@@ -46,6 +46,9 @@ class RoomsFragment : Fragment() {
         addButton.setOnClickListener {
             controller.pushPostFromCreationViewToFirebase()
         }
+
+        controller.setUpUpperRowSelection()
+        controller.setUpLowerRowSelection()
     }
 }
 /*
