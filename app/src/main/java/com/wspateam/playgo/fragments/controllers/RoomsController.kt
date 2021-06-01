@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.FirebaseDatabase
 import com.wspateam.playgo.R
-import com.wspateam.playgo.adapters.RoomsRecyclerAdapter
+import com.wspateam.playgo.adapters.PostsRecyclerAdapter
 import com.wspateam.playgo.androidutilities.AndroidUtilities.AndroidUtilities.hideKeyboard
 import com.wspateam.playgo.fragments.RoomsFragment
 import com.wspateam.playgo.models.Post
@@ -32,26 +32,6 @@ class RoomsController(val roomsFragment: RoomsFragment)
     private var upperRowSelectedView = view.findViewById<TextView>(R.id.popularRoomsFragment)
     private var lowerRowSelectedView = view.findViewById<TextView>(R.id.todayLowerRoomsFragment)
 
-    fun pushPostToFirebase(uid: String, author: String, title: String, body: String)
-    {
-        val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss")
-        val currentDateAndTime: String = simpleDateFormat.format(Date())
-
-        val post = Post(uid, author, title, body, currentDateAndTime)
-        dbRef.child("posts").child(uid).setValue(post).addOnCompleteListener {
-            if (it.isSuccessful)
-            {
-                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRoomsFragment)
-                getPostsFromFirebase()
-                Log.i(TAG, "Post pushed to the db.")
-            }
-            else
-            {
-                Log.e(TAG, "Couldn't push the post to the db.")
-            }
-        }
-    }
-
     fun pushPostFromCreationViewToFirebase()
     {
         val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss")
@@ -64,12 +44,6 @@ class RoomsController(val roomsFragment: RoomsFragment)
         {
             Toast.makeText(view.context, "Couldn't get authorUid.", Toast.LENGTH_SHORT).show()
             Log.e(TAG, "Couldn't get authorUid.")
-            return
-        }
-        if (postUid.isNullOrEmpty())
-        {
-            Toast.makeText(view.context, "Couldn't create postUid.", Toast.LENGTH_SHORT).show()
-            Log.e(TAG, "Couldn't create postUid.")
             return
         }
         if (postUid.isNullOrEmpty())
@@ -114,7 +88,7 @@ class RoomsController(val roomsFragment: RoomsFragment)
                 }
                 else
                 {
-                    Log.e(TAG, "Couldn't cast resut to User. ${it.exception?.message.toString()}")
+                    Log.e(TAG, "Couldn't cast result to User. ${it.exception?.message.toString()}")
                 }
             }
             else
@@ -150,7 +124,7 @@ class RoomsController(val roomsFragment: RoomsFragment)
     {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRoomsFragment)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = RoomsRecyclerAdapter(posts)
+        recyclerView.adapter = PostsRecyclerAdapter(posts)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
     }
 

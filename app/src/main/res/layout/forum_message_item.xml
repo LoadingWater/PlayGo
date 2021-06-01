@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="10dp"
-    tools:background="@color/darkBlue"
+    tools:backgroundTint="@color/darkBlue"
+    android:background="@drawable/rounded_search_view"
     android:layout_margin="5dp"
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/authorForumPostItem"
+        android:id="@+id/authorReplyItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_outline_account_circle_24_white"
@@ -22,18 +23,19 @@
 
 
     <TextView
+        android:id="@+id/bodyReplyItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"
         android:text="sdfasdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/likesReplyItem"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorForumPostItem" />
+        app:layout_constraintTop_toBottomOf="@+id/authorReplyItem" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/likesReplyItem"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_baseline_thumb_up_24_filled_yellow"
@@ -50,7 +52,18 @@
         android:drawableEnd="@drawable/ic_baseline_reply_24_filled_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/likesReplyItem" />
+
+    <TextView
+        android:id="@+id/dateReplyItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/likesReplyItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/likesReplyItem" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

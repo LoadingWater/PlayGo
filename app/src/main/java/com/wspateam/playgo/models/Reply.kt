@@ -2,11 +2,10 @@ package com.wspateam.playgo.models
 
 import java.io.Serializable
 
-data class Post(
+data class Reply(
     var uid: String? = "",
+    var postUid: String? = "",
     var author: String? = "",
-    var title: String? = "",
     var body: String? = "",
-    var date: String? = "",
-    var repliesCount: Int? = 0
+    var date: String? = ""
 ) : Serializable

@@ -12,7 +12,7 @@ import com.wspateam.playgo.R
 import com.wspateam.playgo.fragments.RoomsFragmentDirections
 import com.wspateam.playgo.models.Post
 
-class RoomsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.Adapter<RoomsRecyclerAdapter.ViewHolder>()
+class PostsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.Adapter<PostsRecyclerAdapter.ViewHolder>()
 {
     /**
      * Provide a reference to the type of views that you are using
@@ -23,22 +23,22 @@ class RoomsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.A
         var rootLayout: ConstraintLayout = view.findViewById<ConstraintLayout>(R.id.rootLayoutForumPostItem)
         var postUid: String = ""
         var postTitle: TextView = view.findViewById<TextView>(R.id.titleForumPostItem)
-        var postAuthor: TextView = view.findViewById<TextView>(R.id.authorForumPostItem)
+        var postAuthor: TextView = view.findViewById<TextView>(R.id.authorReplyItem)
         var postBody: String = ""
-        var postDate: TextView = view.findViewById<TextView>(R.id.dateForumPostItem)
+        var postDate: TextView = view.findViewById<TextView>(R.id.dateReplyItem)
         var postRepliesCount: TextView = view.findViewById(R.id.repliesCountForumPostItem)
 
         init
         {
             rootLayout.setOnClickListener {
                 Toast.makeText(view.context, "Clicked on post.", Toast.LENGTH_SHORT).show()
-                val action = RoomsFragmentDirections.actionRoomsFragmentToForumPostFragment(
-                    postUid,
-                    postTitle.text.toString(),
-                    postAuthor.text.toString(),
-                    postBody,
-                    postDate.text.toString()
-                    )
+                val post = Post()
+                post.uid = postUid
+                post.author = postAuthor.text.toString()
+                post.body = postBody
+                post.date = postDate.text.toString()
+                post.title = postTitle.text.toString()
+                val action = RoomsFragmentDirections.actionRoomsFragmentToForumPostFragment(post)
             Navigation.findNavController(view).navigate(action)
             }
         }
@@ -61,7 +61,7 @@ class RoomsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.A
         viewHolder.postAuthor.text = posts[position].author ?: "N/A"
         viewHolder.postBody = posts[position].body ?: "N/A"
         viewHolder.postDate.text = posts[position].date ?: "N/A"
-        viewHolder.postRepliesCount.text = "${posts[position].replies?.size} replies" ?: "No replies"
+        viewHolder.postRepliesCount.text = "${posts[position].repliesCount} replies" ?: "No replies"
     }
 
     // Return the size of your dataset (invoked by the layout manager)

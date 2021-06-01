@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/authorForumPostItem"
+        android:id="@+id/authorReplyItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -41,16 +41,17 @@
         tools:text="12 replies"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorForumPostItem" />
+        app:layout_constraintTop_toBottomOf="@+id/authorReplyItem" />
 
     <TextView
-        android:id="@+id/dateForumPostItem"
+        android:id="@+id/dateReplyItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="22 may 2021"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/repliesCountForumPostItem"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/repliesCountForumPostItem" />
 
     <ImageView
         android:id="@+id/favoriteForumPostItem"

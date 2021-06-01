@@ -82,6 +82,7 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/hp_simplified265"
             android:text="Login"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toTopOf="@+id/createWelcomeFragment"
             app:layout_constraintEnd_toEndOf="@+id/createWelcomeFragment"
             app:layout_constraintStart_toStartOf="@+id/createWelcomeFragment" />
@@ -93,6 +94,7 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/hp_simplified265"
             android:text="Create an account"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

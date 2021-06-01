@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.wspateam.playgo.R
 import com.wspateam.playgo.fragments.controllers.ForumPostController
@@ -24,5 +25,14 @@ class ForumPostFragment : Fragment() {
 
         val controller = ForumPostController(this)
         controller.showPost()
+        view.findViewById<Button>(R.id.showReplyFormButtonForumPostFragment).setOnClickListener {
+            controller.showReplyForm()
+        }
+        view.findViewById<Button>(R.id.closeReplyFormButtonForumPostFragment).setOnClickListener {
+            controller.hideReplyForm()
+        }
+        view.findViewById<Button>(R.id.addReplyButtonForumPostFragment).setOnClickListener {
+            controller.addReplyToPost()
+        }
     }
 }
