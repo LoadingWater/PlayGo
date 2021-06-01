@@ -22,6 +22,7 @@ class PostsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.A
     {
         var rootLayout: ConstraintLayout = view.findViewById<ConstraintLayout>(R.id.rootLayoutForumPostItem)
         var postUid: String = ""
+        var game: String = ""
         var postTitle: TextView = view.findViewById<TextView>(R.id.titleForumPostItem)
         var postAuthor: TextView = view.findViewById<TextView>(R.id.authorReplyItem)
         var postBody: String = ""
@@ -34,6 +35,7 @@ class PostsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.A
                 Toast.makeText(view.context, "Clicked on post.", Toast.LENGTH_SHORT).show()
                 val post = Post()
                 post.uid = postUid
+                post.game = game
                 post.author = postAuthor.text.toString()
                 post.body = postBody
                 post.date = postDate.text.toString()
@@ -57,6 +59,7 @@ class PostsRecyclerAdapter(private val posts: MutableList<Post>): RecyclerView.A
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.postUid = posts[position].uid ?: "N/A"
+        viewHolder.game = posts[position].game ?: "N/A"
         viewHolder.postTitle.text = posts[position].title ?: "N/A"
         viewHolder.postAuthor.text = posts[position].author ?: "N/A"
         viewHolder.postBody = posts[position].body ?: "N/A"

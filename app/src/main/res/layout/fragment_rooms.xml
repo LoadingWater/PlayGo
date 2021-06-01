@@ -108,6 +108,8 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+
+                android:id="@+id/lolGameRoomsFragment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -124,15 +126,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/hp_simplified265"
                     android:gravity="center"
                     android:text="League of Legends"
-                    android:fontFamily="@font/hp_simplified265"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/wotGameRoomsFragment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -149,15 +152,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/hp_simplified265"
                     android:gravity="center"
                     android:text="World of Tanks"
-                    android:fontFamily="@font/hp_simplified265"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/fortniteGameRoomsFragment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -174,15 +178,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/hp_simplified265"
                     android:gravity="center"
                     android:text="Fortnite"
-                    android:fontFamily="@font/hp_simplified265"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/dota2GameRoomsFragment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@dimen/linearItemsSpacing"
@@ -199,9 +204,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/hp_simplified265"
                     android:gravity="center"
                     android:text="DOTA2"
-                    android:fontFamily="@font/hp_simplified265"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
@@ -311,30 +316,29 @@
             android:id="@+id/subjectFieldRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallHeight"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="@dimen/linearVerticalMargin"
             android:background="@drawable/rounded_black_white"
             android:ems="10"
-            android:hint="Title"
             android:fontFamily="@font/hp_simplified265"
+            android:hint="Title"
             android:inputType="textPersonName"
             android:paddingStart="@dimen/editTextStartPadding"
-            app:layout_constraintEnd_toEndOf="@+id/iconsRoomsFragment"
-            app:layout_constraintStart_toStartOf="@+id/iconsRoomsFragment"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerRoomsFragment"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/iconsRoomsFragment"
+        <Spinner
+            android:id="@+id/spinnerRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallHeight"
-            android:layout_marginTop="@dimen/defaultVerticalMargin"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/defaultVerticalMargin"
             android:layout_marginEnd="30dp"
             android:background="@drawable/rounded_black_white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/subjectFieldRoomsFragment"
-            android:orientation="horizontal"
-            android:visibility="invisible"/>
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/subjectFieldRoomsFragment" />
 
         <TextView
             android:id="@+id/textView3"
@@ -354,13 +358,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Message"
+            android:text="Game"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:fontFamily="@font/hp_simplified265"
-            app:layout_constraintBottom_toBottomOf="@+id/iconsRoomsFragment"
+            app:layout_constraintBottom_toBottomOf="@+id/spinnerRoomsFragment"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iconsRoomsFragment" />
+            app:layout_constraintTop_toTopOf="@+id/spinnerRoomsFragment" />
 
         <EditText
             android:id="@+id/messageRoomsFragment"
@@ -379,7 +383,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconsRoomsFragment" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerRoomsFragment" />
 
         <com.wspateam.playgo.customviews.CustomButton
             android:id="@+id/addButtonRoomsFragment"

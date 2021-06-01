@@ -2,4 +2,12 @@
     <string name="app_name">PlayGo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="games">
+        <item>League of Legends</item>
+        <item>World of Tanks</item>
+        <item>Fortnite</item>
+        <item>DOTA2</item>
+    </string-array>
+
 </resources>

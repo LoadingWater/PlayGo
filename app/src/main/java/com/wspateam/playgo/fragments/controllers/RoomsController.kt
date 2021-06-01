@@ -3,9 +3,7 @@ package com.wspateam.playgo.fragments.controllers
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +18,7 @@ import com.wspateam.playgo.models.User
 import com.wspateam.playgo.viewmodels.SharedApplicationViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class RoomsController(val roomsFragment: RoomsFragment)
 {
@@ -38,6 +37,7 @@ class RoomsController(val roomsFragment: RoomsFragment)
         val currentDateAndTime: String = simpleDateFormat.format(Date())
         val authorUid = sharedViewModel.firebaseAuthInstance.value?.currentUser?.uid
         val postUid = dbRef.child("posts").push().key
+        val game = view.findViewById<Spinner>(R.id.spinnerRoomsFragment).selectedItem.toString()
         val title = view.findViewById<EditText>(R.id.subjectFieldRoomsFragment).editableText.toString().trim()
         val body = view.findViewById<EditText>(R.id.messageRoomsFragment).editableText.toString().trim()
         if ( authorUid.isNullOrEmpty())
@@ -70,7 +70,7 @@ class RoomsController(val roomsFragment: RoomsFragment)
                 val user = it.result?.getValue(User::class.java)
                 if (user != null)
                 {
-                    val post = Post(postUid, user.username, title, body, currentDateAndTime)
+                    val post = Post(postUid, game, user.username, title, body, currentDateAndTime)
                     dbRef.child("posts").child(postUid).setValue(post).addOnCompleteListener {
                         if (it.isSuccessful)
                         {
@@ -98,7 +98,7 @@ class RoomsController(val roomsFragment: RoomsFragment)
         }
     }
 
-    fun getPostsFromFirebase()
+    fun getPostsFromFirebase(game: String = "")
     {
         val post = dbRef.child("posts").get().addOnCompleteListener {
             if (it.isSuccessful)
@@ -108,7 +108,15 @@ class RoomsController(val roomsFragment: RoomsFragment)
                     val post = it.getValue(Post::class.java)
                     if (post != null)
                     {
-                        posts.add(post)
+                        //If an argument was given
+                        if (game.isNotBlank() && post.game == game)
+                        {
+                            posts.add(post)
+                        }
+                        else if (game.isBlank())
+                        {
+                            posts.add(post)
+                        }
                     }
                 }
                 setUpRecyclerAdapter(posts)
@@ -195,5 +203,13 @@ class RoomsController(val roomsFragment: RoomsFragment)
         lowerRowSelectedView.background = null
         clickedView.background = view.resources.getDrawable(R.drawable.rounded_rect_yellow)
         lowerRowSelectedView = clickedView
+    }
+
+    fun populateSpinner()
+    {
+        val spinner = view.findViewById<Spinner>(R.id.spinnerRoomsFragment)
+        val adapter = ArrayAdapter.createFromResource(view.context, R.array.games, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 }
