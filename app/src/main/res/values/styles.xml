@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="playGoSearchView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="closeIcon">@drawable/ic_round_close_24_white</item>
+        <item name="searchIcon">@drawable/ic_round_search_24_white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+</resources>

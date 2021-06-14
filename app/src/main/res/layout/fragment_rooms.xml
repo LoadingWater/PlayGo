@@ -8,45 +8,13 @@
     android:padding="5dp"
     tools:context=".fragments.RoomsFragment">
 
-    <Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/darkBlue"
-        android:navigationIcon="@drawable/ic_round_menu_24"
+    <include
+        android:id="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <SearchView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded_search_view"
-                android:iconifiedByDefault="false"
-                android:searchIcon="@drawable/ic_round_search_24_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:drawableLeft="@drawable/ic_outline_account_circle_24_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </Toolbar>
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/toolbar">
+    </include>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,7 +23,7 @@
         android:layout_marginVertical="@dimen/linearVerticalMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             android:id="@+id/popularRoomsFragment"
