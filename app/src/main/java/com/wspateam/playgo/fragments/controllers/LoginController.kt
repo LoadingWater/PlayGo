@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.google.firebase.database.FirebaseDatabase
 import com.wspateam.playgo.R
 import com.wspateam.playgo.androidutilities.AndroidUtilities
 import com.wspateam.playgo.fragments.LoginFragment
@@ -14,8 +15,9 @@ import com.wspateam.playgo.viewmodels.SharedApplicationViewModel
 
 class LoginController(val loginFragment: LoginFragment)
 {
-    private val TAG = "LoginController"
+    private val TAG = LoginController::class.java.simpleName
     private val sharedViewModel = ViewModelProvider(loginFragment).get(SharedApplicationViewModel::class.java)
+    private val dbRef = sharedViewModel.firebaseDatabaseInstance.value?.reference ?: FirebaseDatabase.getInstance().reference
     private val view = loginFragment.requireView()
     private val activity = loginFragment.requireActivity()
 
@@ -40,7 +42,7 @@ class LoginController(val loginFragment: LoginFragment)
         val email = view.findViewById<EditText>(R.id.emailFieldLoginFragment).text.toString().trim()
         val password = view.findViewById<EditText>(R.id.passwordFieldLoginFragment).text.toString().trim()
 
-        if (!email.isEmpty() && !password.isEmpty())
+        if (email.isNotEmpty() && password.isNotEmpty())
         {
             sharedViewModel.firebaseAuthInstance.value?.signInWithEmailAndPassword(email, password)?.addOnCompleteListener {
                 if (it.isSuccessful)
@@ -60,4 +62,5 @@ class LoginController(val loginFragment: LoginFragment)
             Toast.makeText(loginFragment.context, "Empty fields.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

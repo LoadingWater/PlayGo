@@ -8,7 +8,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.wspateam.playgo.R
 import com.wspateam.playgo.adapters.PostsRecyclerAdapter
 import com.wspateam.playgo.androidutilities.AndroidUtilities.AndroidUtilities.hideKeyboard
@@ -22,7 +25,7 @@ import java.util.*
 
 class RoomsController(val roomsFragment: RoomsFragment)
 {
-    private val TAG = "RoomsController"
+    private val TAG = RoomsController::class.java.simpleName
     private val sharedViewModel = ViewModelProvider(roomsFragment).get(SharedApplicationViewModel::class.java)
     private val dbRef = sharedViewModel.firebaseDatabaseInstance.value?.reference ?: FirebaseDatabase.getInstance().reference
     private val view = roomsFragment.requireView()
@@ -33,9 +36,9 @@ class RoomsController(val roomsFragment: RoomsFragment)
 
     fun pushPostFromCreationViewToFirebase()
     {
-        val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss")
-        val currentDateAndTime: String = simpleDateFormat.format(Date())
-        val authorUid = sharedViewModel.firebaseAuthInstance.value?.currentUser?.uid
+        val currentDateAndTime: String = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(Date())
+        val authorUid = sharedViewModel.currentUser.value!!.uid
+        val username = sharedViewModel.currentUser.value!!.username
         val postUid = dbRef.child("posts").push().key
         val game = view.findViewById<Spinner>(R.id.spinnerRoomsFragment).selectedItem.toString()
         val title = view.findViewById<EditText>(R.id.subjectFieldRoomsFragment).editableText.toString().trim()
@@ -64,47 +67,34 @@ class RoomsController(val roomsFragment: RoomsFragment)
             Log.e(TAG, "Body is empty.")
             return
         }
-        dbRef.child("users").child(authorUid).get().addOnCompleteListener {
+
+        val post = Post(postUid, game, username, title, body, currentDateAndTime)
+        dbRef.child("posts").child(postUid).setValue(post).addOnCompleteListener {
             if (it.isSuccessful)
             {
-                val user = it.result?.getValue(User::class.java)
-                if (user != null)
-                {
-                    val post = Post(postUid, game, user.username, title, body, currentDateAndTime)
-                    dbRef.child("posts").child(postUid).setValue(post).addOnCompleteListener {
-                        if (it.isSuccessful)
-                        {
-                            getPostsFromFirebase()
-                            cleanAfterPostCreation()
-                            Toast.makeText(view.context, "Post created.", Toast.LENGTH_SHORT).show()
-                            Log.i(TAG, "Post pushed to the db.")
-                        }
-                        else
-                        {
-                            Toast.makeText(view.context, "Post wasn't created.", Toast.LENGTH_LONG).show()
-                            Log.e(TAG, "Couldn't push the post to the db.")
-                        }
-                    }
-                }
-                else
-                {
-                    Log.e(TAG, "Couldn't cast result to User. ${it.exception?.message.toString()}")
-                }
+                cleanAfterPostCreation()
+                Toast.makeText(view.context, "Post created.", Toast.LENGTH_SHORT).show()
+                Log.i(TAG, "Post pushed to the db.")
             }
             else
             {
-                Log.e(TAG, "Couldn't get username from authorId.")
+                Toast.makeText(view.context, "Post wasn't created.", Toast.LENGTH_LONG).show()
+                Log.e(TAG, "Couldn't push the post to the db.")
             }
         }
     }
 
     fun getPostsFromFirebase(game: String = "")
     {
-        val post = dbRef.child("posts").get().addOnCompleteListener {
-            if (it.isSuccessful)
+        val post = dbRef.child("posts").addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(error: DatabaseError)
+            {
+
+            }
+            override fun onDataChange(snapshot: DataSnapshot)
             {
                 val posts = mutableListOf<Post>()
-                it.result?.children?.forEach {
+                snapshot.children?.forEach {
                     val post = it.getValue(Post::class.java)
                     if (post != null)
                     {
@@ -119,20 +109,15 @@ class RoomsController(val roomsFragment: RoomsFragment)
                         }
                     }
                 }
-                setUpRecyclerAdapter(posts)
+                view.findViewById<RecyclerView>(R.id.recyclerViewRoomsFragment).adapter = PostsRecyclerAdapter(posts)
             }
-            else
-            {
-                Log.e(TAG, "Failed to get \"posts\" from Firebase. ${it.exception?.message}")
-            }
-        }
+        })
     }
 
-    private fun setUpRecyclerAdapter(posts: MutableList<Post>)
+    fun setUpRecyclerAdapter()
     {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRoomsFragment)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = PostsRecyclerAdapter(posts)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
     }
 
@@ -211,5 +196,20 @@ class RoomsController(val roomsFragment: RoomsFragment)
         val adapter = ArrayAdapter.createFromResource(view.context, R.array.games, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+    }
+
+    fun fetchCurrentUserData()
+    {
+        val currentUserUid = sharedViewModel.firebaseAuthInstance.value!!.currentUser!!.uid
+        dbRef.child("users").child(currentUserUid).get().addOnCompleteListener {
+            if (it.isSuccessful)
+            {
+                sharedViewModel.currentUser.value = it.result!!.getValue(User::class.java)!!
+            }
+            else
+            {
+                Log.e(TAG, "")
+            }
+        }
     }
 }

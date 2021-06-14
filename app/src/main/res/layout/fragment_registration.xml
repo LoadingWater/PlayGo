@@ -162,7 +162,7 @@
             android:layout_width="@dimen/mediumWidth"
             android:layout_height="@dimen/mediumHeight"
             android:layout_marginTop="10dp"
-            android:text="Forget about me"
+            android:text="Remember me"
             app:layout_constraintEnd_toEndOf="@+id/passwordFieldRegistrationFragment"
             app:layout_constraintStart_toStartOf="@+id/passwordFieldRegistrationFragment"
             app:layout_constraintTop_toBottomOf="@+id/passwordFieldRegistrationFragment" />

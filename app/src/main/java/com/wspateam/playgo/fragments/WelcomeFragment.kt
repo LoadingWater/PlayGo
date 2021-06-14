@@ -12,7 +12,7 @@ import com.wspateam.playgo.R
 
 class WelcomeFragment : Fragment()
 {
-	val TAG = "WelcomeFragment"
+	val TAG = WelcomeFragment::class.java.simpleName
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 							  savedInstanceState: Bundle?): View?

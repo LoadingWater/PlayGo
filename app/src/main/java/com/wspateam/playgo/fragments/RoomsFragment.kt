@@ -26,8 +26,10 @@ class RoomsFragment : Fragment() {
 
         val controller = RoomsController(this)
 
+        controller.fetchCurrentUserData()
         controller.populateSpinner()
         controller.getPostsFromFirebase()
+        controller.setUpRecyclerAdapter()
 
         val addDiscussion = view.findViewById<Button>(R.id.addDiscussionRoomsFragment)
         addDiscussion.setOnClickListener {
@@ -44,24 +46,21 @@ class RoomsFragment : Fragment() {
             controller.pushPostFromCreationViewToFirebase()
         }
 
+        val games = resources.getStringArray(R.array.games)
         val lolGame = view.findViewById<FrameLayout>(R.id.lolGameRoomsFragment).setOnClickListener {
-            controller.getPostsFromFirebase("League of Legends")
+            controller.getPostsFromFirebase(games[0])
         }
         val wotGame = view.findViewById<FrameLayout>(R.id.wotGameRoomsFragment).setOnClickListener {
-            controller.getPostsFromFirebase("World of Tanks")
+            controller.getPostsFromFirebase(games[1])
         }
         val fortniteGame = view.findViewById<FrameLayout>(R.id.fortniteGameRoomsFragment).setOnClickListener {
-            controller.getPostsFromFirebase("Fortnite")
+            controller.getPostsFromFirebase(games[2])
         }
         val dota2Game = view.findViewById<FrameLayout>(R.id.dota2GameRoomsFragment).setOnClickListener {
-            controller.getPostsFromFirebase("DOTA2")
+            controller.getPostsFromFirebase(games[3])
         }
 
         controller.setUpUpperRowSelection()
         controller.setUpLowerRowSelection()
     }
 }
-/*
-* val uid = FirebaseDatabase.getInstance().reference.child("posts").push().key!!
-            controller.pushPostToFirebase(uid, "author", "title", "body")
-* */
