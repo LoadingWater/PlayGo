@@ -194,17 +194,6 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView2">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/textViewHeight"
-            android:layout_marginEnd="@dimen/linearItemsSpacing"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Forum"
-            android:fontFamily="@font/hp_simplified265"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/todayLowerRoomsFragment"
             android:layout_width="0dp"
             android:layout_height="@dimen/textViewHeight"
@@ -243,6 +232,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/textViewHeight"
             android:layout_weight="2"
+            android:layout_marginHorizontal="2dp"
             android:background="@drawable/rounded_search_view"
             android:backgroundTint="@color/darkYellow"
             android:gravity="center"
@@ -251,6 +241,22 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold" />
+
+        <com.wspateam.playgo.customviews.CustomButton
+            android:id="@+id/showUsersRoomsFragment"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textViewHeight"
+            android:layout_weight="2"
+            android:layout_marginHorizontal="2dp"
+            android:background="@drawable/rounded_search_view"
+            android:backgroundTint="@color/darkYellow"
+            android:gravity="center"
+            android:text="Show users"
+            android:fontFamily="@font/hp_simplified265"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
 
