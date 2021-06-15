@@ -10,11 +10,10 @@
 
     <include
         android:id="@+id/toolbar"
+        layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/toolbar">
-    </include>
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -32,9 +31,9 @@
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
             android:background="@drawable/rounded_rect_yellow"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Popular"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
 
         <TextView
@@ -43,9 +42,9 @@
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Recommended"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
 
         <TextView
@@ -54,136 +53,134 @@
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Favorite"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
+    <HorizontalScrollView
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/linearVerticalMargin"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <LinearLayout
-            android:isScrollContainer="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:isScrollContainer="true">
 
-            <FrameLayout
+                <FrameLayout
+                    android:id="@+id/lolGameRoomsFragment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="@dimen/linearItemsSpacing"
+                    android:background="@drawable/rounded_search_view"
+                    android:padding="@dimen/frameSmallPadding">
 
-                android:id="@+id/lolGameRoomsFragment"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="@dimen/linearItemsSpacing"
-                android:background="@drawable/rounded_search_view"
-                android:padding="@dimen/frameSmallPadding">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top|center"
+                        app:srcCompat="@drawable/dota2" />
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="top|center"
-                    app:srcCompat="@drawable/dota2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/hp_simplified265"
+                        android:gravity="center"
+                        android:text="League of Legends"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:fontFamily="@font/hp_simplified265"
-                    android:gravity="center"
-                    android:text="League of Legends"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                </FrameLayout>
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/wotGameRoomsFragment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="@dimen/linearItemsSpacing"
+                    android:background="@drawable/rounded_search_view"
+                    android:padding="@dimen/frameSmallPadding">
 
-            <FrameLayout
-                android:id="@+id/wotGameRoomsFragment"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="@dimen/linearItemsSpacing"
-                android:background="@drawable/rounded_search_view"
-                android:padding="@dimen/frameSmallPadding">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top|center"
+                        app:srcCompat="@drawable/dota2" />
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="top|center"
-                    app:srcCompat="@drawable/dota2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/hp_simplified265"
+                        android:gravity="center"
+                        android:text="World of Tanks"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:fontFamily="@font/hp_simplified265"
-                    android:gravity="center"
-                    android:text="World of Tanks"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                </FrameLayout>
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/fortniteGameRoomsFragment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="@dimen/linearItemsSpacing"
+                    android:background="@drawable/rounded_search_view"
+                    android:padding="@dimen/frameSmallPadding">
 
-            <FrameLayout
-                android:id="@+id/fortniteGameRoomsFragment"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="@dimen/linearItemsSpacing"
-                android:background="@drawable/rounded_search_view"
-                android:padding="@dimen/frameSmallPadding">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top|center"
+                        app:srcCompat="@drawable/dota2" />
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="top|center"
-                    app:srcCompat="@drawable/dota2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/hp_simplified265"
+                        android:gravity="center"
+                        android:text="Fortnite"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:fontFamily="@font/hp_simplified265"
-                    android:gravity="center"
-                    android:text="Fortnite"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                </FrameLayout>
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/dota2GameRoomsFragment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="@dimen/linearItemsSpacing"
+                    android:background="@drawable/rounded_search_view"
+                    android:padding="@dimen/frameSmallPadding">
 
-            <FrameLayout
-                android:id="@+id/dota2GameRoomsFragment"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="@dimen/linearItemsSpacing"
-                android:background="@drawable/rounded_search_view"
-                android:padding="@dimen/frameSmallPadding">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top|center"
+                        app:srcCompat="@drawable/dota2" />
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="top|center"
-                    app:srcCompat="@drawable/dota2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:fontFamily="@font/hp_simplified265"
+                        android:gravity="center"
+                        android:text="DOTA2"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:fontFamily="@font/hp_simplified265"
-                    android:gravity="center"
-                    android:text="DOTA2"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                </FrameLayout>
+            </LinearLayout>
 
-            </FrameLayout>
-        </LinearLayout>
-
-    </ScrollView>
+    </HorizontalScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -193,7 +190,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
         <TextView
             android:id="@+id/todayLowerRoomsFragment"
@@ -202,9 +199,9 @@
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
             android:background="@drawable/rounded_rect_yellow"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Today"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
 
         <TextView
@@ -213,9 +210,9 @@
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Popular"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
 
         <TextView
@@ -224,22 +221,34 @@
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginEnd="@dimen/linearItemsSpacing"
             android:layout_weight="1"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Favorite"
-            android:fontFamily="@font/hp_simplified265"
             android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/linearVerticalMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <com.wspateam.playgo.customviews.CustomButton
             android:id="@+id/addDiscussionRoomsFragment"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textViewHeight"
-            android:layout_weight="2"
+            android:layout_height="@dimen/smallHeight"
             android:layout_marginHorizontal="2dp"
+            android:layout_weight="2"
             android:background="@drawable/rounded_search_view"
             android:backgroundTint="@color/darkYellow"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Add discussion"
-            android:fontFamily="@font/hp_simplified265"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -247,18 +256,17 @@
         <com.wspateam.playgo.customviews.CustomButton
             android:id="@+id/showUsersRoomsFragment"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textViewHeight"
-            android:layout_weight="2"
+            android:layout_height="@dimen/smallHeight"
             android:layout_marginHorizontal="2dp"
+            android:layout_weight="2"
             android:background="@drawable/rounded_search_view"
             android:backgroundTint="@color/darkYellow"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="center"
             android:text="Show users"
-            android:fontFamily="@font/hp_simplified265"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 
@@ -271,7 +279,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         tools:itemCount="10"
         tools:listitem="@layout/forum_post_item" />
 
@@ -281,12 +289,12 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/linearVerticalMargin"
         android:background="@drawable/rounded_rectangle"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        android:visibility="invisible">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <EditText
             android:id="@+id/subjectFieldRoomsFragment"
@@ -334,10 +342,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:fontFamily="@font/hp_simplified265"
             android:text="Game"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:fontFamily="@font/hp_simplified265"
             app:layout_constraintBottom_toBottomOf="@+id/spinnerRoomsFragment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/spinnerRoomsFragment" />
@@ -350,9 +358,9 @@
             android:layout_marginVertical="@dimen/defaultVerticalMargin"
             android:background="@drawable/rounded_black_white"
             android:ems="10"
+            android:fontFamily="@font/hp_simplified265"
             android:gravity="start|top"
             android:hint="Your post"
-            android:fontFamily="@font/hp_simplified265"
             android:inputType="textMultiLine"
             android:padding="@dimen/editTextStartPadding"
             app:layout_constraintBottom_toTopOf="@+id/addButtonRoomsFragment"
@@ -366,10 +374,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/textViewHeight"
             android:layout_marginBottom="10dp"
-            android:text="Add"
-            android:fontFamily="@font/hp_simplified265"
-            android:textAllCaps="false"
             android:background="@drawable/rounded_button"
+            android:fontFamily="@font/hp_simplified265"
+            android:text="Add"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
