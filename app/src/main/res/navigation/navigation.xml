@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/roomsFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.wspateam.playgo.usersFragment"
+        android:name="com.wspateam.playgo.fragments.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
         <action
@@ -113,7 +113,11 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.wspateam.playgo.chatFragment"
+        android:name="com.wspateam.playgo.fragments.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="opponent"
+            app:argType="com.wspateam.playgo.models.User" />
+    </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.wspateam.playgo.R
 import com.wspateam.playgo.fragments.controllers.RoomsController
 
@@ -30,6 +31,7 @@ class RoomsFragment : Fragment() {
         controller.populateSpinner()
         controller.getPostsFromFirebase()
         controller.setUpRecyclerAdapter()
+        controller.onUserDisconnect()
 
         val addDiscussion = view.findViewById<Button>(R.id.addDiscussionRoomsFragment)
         addDiscussion.setOnClickListener {
@@ -44,6 +46,10 @@ class RoomsFragment : Fragment() {
         val addButton = view.findViewById<Button>(R.id.addButtonRoomsFragment)
         addButton.setOnClickListener {
             controller.pushPostFromCreationViewToFirebase()
+        }
+
+        val showUsersButton = view.findViewById<Button>(R.id.showUsersRoomsFragment).setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.usersFragment)
         }
 
         val games = resources.getStringArray(R.array.games)

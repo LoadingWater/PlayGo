@@ -48,6 +48,7 @@ class LoginController(val loginFragment: LoginFragment)
                 if (it.isSuccessful)
                 {
                     Toast.makeText(loginFragment.context, "Logged in.", Toast.LENGTH_SHORT).show()
+                    dbRef.child("users").child(sharedViewModel.firebaseAuthInstance.value!!.currentUser?.uid!!).child("status").setValue("online")
                     Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_roomsFragment)
                 }
                 else

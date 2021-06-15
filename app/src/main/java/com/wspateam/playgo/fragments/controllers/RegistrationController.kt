@@ -43,13 +43,13 @@ class RegistrationController(val registrationFragment: RegistrationFragment)
         val email = view.findViewById<EditText>(R.id.emailFieldRegistrationFragment).text.toString().trim()
         val password = view.findViewById<EditText>(R.id.passwordFieldRegistrationFragment).text.toString().trim()
 
-        if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty())
+        if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty())
         {
             val a = sharedViewModel.firebaseAuthInstance.value?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener {
                 if (it.isSuccessful)
                 {
                     val uid = it.result?.user?.uid
-                    pushUserToFirebase(uid!!, username, email, password)
+                    pushUserToFirebase(uid!!, username, email, password, "online");
                     Toast.makeText(registrationFragment.context, "User registered.", Toast.LENGTH_SHORT).show()
                     Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_roomsFragment)
                 }
@@ -66,10 +66,10 @@ class RegistrationController(val registrationFragment: RegistrationFragment)
         }
     }
 
-    private fun pushUserToFirebase(uid: String, username: String, email: String, password: String)
+    private fun pushUserToFirebase(uid: String, username: String, email: String, password: String, status: String)
     {
         val ref = sharedViewModel.firebaseDatabaseInstance.value?.reference ?: FirebaseDatabase.getInstance().reference
-        val user = User(uid, username, email, password)
+        val user = User(uid, username, email, password, "online")
         ref.child("users").child(uid).setValue(user).addOnCompleteListener {
             if (it.isSuccessful)
             {

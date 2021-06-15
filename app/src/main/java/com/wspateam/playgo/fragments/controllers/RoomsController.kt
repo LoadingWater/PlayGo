@@ -212,4 +212,10 @@ class RoomsController(val roomsFragment: RoomsFragment)
             }
         }
     }
+
+    fun onUserDisconnect()
+    {
+        val uid= sharedViewModel.firebaseAuthInstance.value!!.currentUser!!.uid
+        dbRef.child("users").child(uid).child("status").onDisconnect().setValue("offline")
+    }
 }
